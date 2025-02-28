@@ -1,0 +1,80 @@
+{
+	"death.attack.cold": "%1$s frös ihjäl",
+	"death.attack.cold.player": "%1$s frös ihjäl under strid %2$1",
+
+	"death.attack.heat": "%1$s dod av värmeslag",
+	"death.attack.heat.player": "%1$s dod av värmeslag under strid %2$s",
+
+	"effect.temperatures.cold_resistance": "Kalltresistens",
+	"description.effect.temperatures.cold_resistance": "Grants immunity to cold temperatures",
+
+	"effect.temperatures.heat_resistance": "Värmeresistens",
+	"description.effect.temperatures.heat_resistance": "Grants immunity to hot temperatures",
+
+	"effect.temperatures.ice_breaker": "Isbrytning",
+	"description.effect.temperatures.ice_breaker": "Prevents freezing in very cold water",
+
+	"item.minecraft.potion.effect.cold_resistance_i_short": "Kalltresistensbrygd",
+	"item.minecraft.splash_potion.effect.cold_resistance_i_short": "Kastbar Kalltresistensbrygd",
+	"item.minecraft.lingering_potion.effect.cold_resistance_i_short": "Lvardröjande Kalltresistensbrygd",
+	"item.minecraft.tipped_arrow.effect.cold_resistance_i_short": "Kalltresistenspil",
+
+	"item.minecraft.potion.effect.cold_resistance_i_long": "Kalltresistensbrygd",
+	"item.minecraft.splash_potion.effect.cold_resistance_i_long": "Kastbar Kalltresistensbrygd",
+	"item.minecraft.lingering_potion.effect.cold_resistance_i_long": "Lvardröjande Kalltresistensbrygd",
+	"item.minecraft.tipped_arrow.effect.cold_resistance_i_long": "Kalltresistenspil",
+
+	"item.minecraft.potion.effect.cold_resistance_ii_short": "Kalltresistensbrygd II",
+	"item.minecraft.splash_potion.effect.cold_resistance_ii_short": "Kastbar Kalltresistensbrygd II",
+	"item.minecraft.lingering_potion.effect.cold_resistance_ii_short": "Lvardröjande Kalltresistensbrygd II",
+	"item.minecraft.tipped_arrow.effect.cold_resistance_ii_short": "Kalltresistenspil II",
+
+	"item.minecraft.potion.effect.cold_resistance_ii_long": "Kalltresistensbrygd II",
+	"item.minecraft.splash_potion.effect.cold_resistance_ii_long": "Kastbar Kalltresistensbrygd II",
+	"item.minecraft.lingering_potion.effect.cold_resistance_ii_long": "Lvardröjande Kalltresistensbrygd II",
+	"item.minecraft.tipped_arrow.effect.cold_resistance_ii_long": "Kalltresistenspil II",
+
+	"item.minecraft.potion.effect.heat_resistance_i_short": "Värmeresistensbrygd",
+	"item.minecraft.splash_potion.effect.heat_resistance_i_short": "Kastbar värmeresistensbrygd",
+	"item.minecraft.lingering_potion.effect.heat_resistance_i_short": "Lvardröjande värmeresistensbrygd",
+	"item.minecraft.tipped_arrow.effect.heat_resistance_i_short": "Värmeresistenspil",
+
+	"item.minecraft.potion.effect.heat_resistance_i_long": "Värmeresistensbrygd",
+	"item.minecraft.splash_potion.effect.heat_resistance_i_long": "Kastbar värmeresistensbrygd",
+	"item.minecraft.lingering_potion.effect.heat_resistance_i_long": "Lvardröjande värmeresistensbrygd",
+	"item.minecraft.tipped_arrow.effect.heat_resistance_i_long": "Värmeresistenspil",
+
+	"item.minecraft.potion.effect.heat_resistance_ii_short": "Värmeresistensbrygd II",
+	"item.minecraft.splash_potion.effect.heat_resistance_ii_short": "Kastbar värmeresistensbrygd II",
+	"item.minecraft.lingering_potion.effect.heat_resistance_ii_short": "Lvardröjande värmeresistensbrygd II",
+	"item.minecraft.tipped_arrow.effect.heat_resistance_ii_short": "Värmeresistenspil II",
+
+	"item.minecraft.potion.effect.heat_resistance_ii_long": "Värmeresistensbrygd II",
+	"item.minecraft.splash_potion.effect.heat_resistance_ii_long": "Kastbar värmeresistensbrygd II",
+	"item.minecraft.lingering_potion.effect.heat_resistance_ii_long": "Lvardröjande värmeresistensbrygd II",
+	"item.minecraft.tipped_arrow.effect.heat_resistance_ii_long": "Värmeresistenspil II",
+
+	"item.minecraft.potion.effect.ice_breaker_i_short": "Isbrytningbrygd",
+	"item.minecraft.splash_potion.effect.ice_breaker_i_short": "Kastbar isbrytningbrygd",
+	"item.minecraft.lingering_potion.effect.ice_breaker_i_short": "Lvardröjande isbrytningbrygd",
+	"item.minecraft.tipped_arrow.effect.ice_breaker_i_short": "Isbrytningpil",
+
+	"item.minecraft.potion.effect.ice_breaker_i_long": "Isbrytningbrygd",
+	"item.minecraft.splash_potion.effect.ice_breaker_i_long": "Kastbar isbrytningbrygd",
+	"item.minecraft.lingering_potion.effect.ice_breaker_i_long": "Lvardröjande isbrytningbrygd",
+	"item.minecraft.tipped_arrow.effect.ice_breaker_i_long": "Isbrytningpil",
+
+	"enchantment.temperatures.cold_resistance": "Kalltresistens",
+	"enchantment.temperatures.cold_resistance.desc": "Increases cold immunity by 1 point (2 max).",
+
+	"enchantment.temperatures.heat_resistance": "Värmeresistens",
+	"enchantment.temperatures.heat_resistance.desc": "Increases heat immunity by 1 point (2 max).",
+
+	"enchantment.temperatures.flame_breaker": "Eldbrytning",
+	"enchantment.temperatures.flame_breaker.desc": "Immunity to being set on fire due to hot temperatures.",
+
+	"enchantment.temperatures.ice_breaker": "Isbrytning",
+	"enchantment.temperatures.ice_breaker.desc": "Immunity to freezing in very cold water.",
+
+	"itemGroup.temperatures": "Temperatures"
+}
