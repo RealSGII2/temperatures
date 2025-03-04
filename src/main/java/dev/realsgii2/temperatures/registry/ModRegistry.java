@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 public class ModRegistry {
     public static void register(IEventBus eventBus) {
+        ModDeterminants.register(eventBus);
+
         ModEffects.register(eventBus);
         ModEnchantments.register(eventBus);
         ModPotions.register(eventBus);

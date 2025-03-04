@@ -14,7 +14,7 @@ public class TemperatureGaugeAssets {
     /**
      * The ice cube texture used when the in freezing temperatures.
      */
-    public static final ResourceLocation ICE_CUBE = new ResourceLocation(TemperaturesMod.MOD_ID, "textures/gui/gauge/ice_cube.png");
+    public static final ResourceLocation ICE_CUBE = TemperaturesMod.location("textures/gui/gauge/ice_cube.png");
 
     /**
      * Gets the background of the gauge, displaying what temperatures are safe.
@@ -74,7 +74,7 @@ public class TemperatureGaugeAssets {
         public final ResourceLocation texture;
 
         WarningRingTexture(String path) {
-            this.texture = new ResourceLocation(TemperaturesMod.MOD_ID, path);
+            this.texture = TemperaturesMod.location(path);
         }
     }
 
@@ -90,7 +90,7 @@ public class TemperatureGaugeAssets {
         public final ResourceLocation texture;
 
         RotatorTexture(String path) {
-            this.texture = new ResourceLocation(TemperaturesMod.MOD_ID, path);
+            this.texture = TemperaturesMod.location(path);
         }
     }
 
@@ -106,7 +106,7 @@ public class TemperatureGaugeAssets {
         public final ResourceLocation texture;
 
         ExtremeBackgroundTexture(String path) {
-            this.texture = new ResourceLocation(TemperaturesMod.MOD_ID, path);
+            this.texture = TemperaturesMod.location(path);
         }
     }
 
@@ -119,7 +119,7 @@ public class TemperatureGaugeAssets {
 
             for (int x = 0; x < 3; x++) {
                 for (int y = 0; y < 3; y++) {
-                    put(Pair.of(map.get(x), map.get(y)), new ResourceLocation(TemperaturesMod.MOD_ID, "textures/gui/gauge/bg/cold" + x + "_hot" + y + ".png"));
+                    put(Pair.of(map.get(x), map.get(y)), TemperaturesMod.location("textures/gui/gauge/bg/cold" + x + "_hot" + y + ".png"));
                 }
             }
         }
@@ -131,7 +131,7 @@ public class TemperatureGaugeAssets {
      */
     public static final List<ResourceLocation> FlameSprites = new ArrayList<>() {{
         for (int i = 1; i < 30; i++)
-            add(new ResourceLocation(TemperaturesMod.MOD_ID, "textures/gui/gauge/flame/" + i + ".png"));
+            add(TemperaturesMod.location("textures/gui/gauge/flame/" + i + ".png"));
     }};
 
     /**

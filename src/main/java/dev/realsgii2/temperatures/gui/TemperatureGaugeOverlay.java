@@ -36,8 +36,7 @@ public class TemperatureGaugeOverlay implements IGuiOverlay {
         assert Minecraft.getInstance().player != null;
 
         renderer.debug("Rain level: " + Minecraft.getInstance().player.level().rainLevel);
-        renderer.debug("Temperature (non-ambient): " + temperature.getCurrentTemperatureWithoutAmbient());
-        renderer.debug("Temperature (ambient: " + temperature.getCurrentTemperature());
+        renderer.debug("Temperature " + temperature.compute());
         renderer.debug("Weights:");
 
         for (Pair<Biome, Double> biome : Util.World.getNearbyWeightedBiomes(Minecraft.getInstance().player)) {
@@ -52,7 +51,7 @@ public class TemperatureGaugeOverlay implements IGuiOverlay {
             renderDebug(renderer, temperature);
 
         TemperatureGaugeAssets.ImageMap textures = TemperatureGaugeAssets.getImageMap(temperature);
-        double currentTemperature = temperature.getCurrentTemperature();
+        double currentTemperature = temperature.compute();
 
         GuiVector position = Config.Client.getGaugePosition();
 

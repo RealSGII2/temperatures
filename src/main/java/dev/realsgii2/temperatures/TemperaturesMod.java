@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -68,6 +69,14 @@ public class TemperaturesMod {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    /**
+     * Creates a ResourceLocation using this mod's namespace.
+     * @param path The path of the ResourceLocation.
+     */
+    public static ResourceLocation location(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ForgeEvents {
         @SubscribeEvent
@@ -94,15 +103,13 @@ public class TemperaturesMod {
 
                 Optional<Registry<Biome>> biomeRegistryHolder =
                         player.level().registryAccess().registry(Registries.BIOME);
-                if (biomeRegistryHolder.isEmpty()) {
-                    chat.sendError("loading biomes");
-                    return;
-                }
 
                 if (Config.Common.getAllBiomes().isEmpty()) {
                     warningMessage = "There doesn't seem to be any configured biomes.";
                     fixMessage = "prefill the configuration file";
                 }
+
+                if (biomeRegistryHolder.isEmpty()) return;
 
                 Registry<Biome> biomeRegistry = biomeRegistryHolder.get();
                 List<? extends Triple<String, Double, Double>> biomes = Config.Common.getBiomeTemperatures();
@@ -120,10 +127,7 @@ public class TemperaturesMod {
                     fixMessage = "fill in missing biomes";
                 }
 
-                if (warningMessage == null) {
-                    chat.sendError("no warnings");
-                    return;
-                }
+                if (warningMessage == null) return;
 
                 chat.sendWarning("Temperatures configuration warning:");
                 chat.sendWarning(warningMessage);
