@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.boilerplate.ChatUtil;
 import dev.realsgii2.temperatures.gui.TemperatureGaugeOverlay;
 import dev.realsgii2.temperatures.handler.Temperature;
@@ -36,6 +35,7 @@ import org.antlr.v4.runtime.misc.Triple;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.BooleanSupplier;
 
 @Mod(TemperaturesMod.MOD_ID)
 public class TemperaturesMod {
@@ -97,7 +97,22 @@ public class TemperaturesMod {
 
             if (!Config.Client.showConfigWarning()) return;
 
-            if (Minecraft.getInstance().isSingleplayer() || player.hasPermissions(2)) {
+            boolean showWarning = false;
+
+            List<BooleanSupplier> conditions = List.of(
+                    () -> Minecraft.getInstance().isSingleplayer(),
+                    () -> player.hasPermissions(2)
+            );
+
+            for (BooleanSupplier condition : conditions) {
+                try {
+                    showWarning = condition.getAsBoolean();
+
+                } catch (Exception ignored) {}
+                if (showWarning) break;
+            }
+
+            if (showWarning) {
                 String warningMessage = null;
                 String fixMessage = null;
 
@@ -155,7 +170,7 @@ public class TemperaturesMod {
                 Temperature temperature = new Temperature(player);
 
                 if (!player.isCreative() && !player.isSpectator()) {
-                    Pair<DamageSource, Integer> possibleDamage = temperature.getPossibleDamage(event);
+                    Util.Pair<DamageSource, Integer> possibleDamage = temperature.getPossibleDamage(event);
 
                     if (possibleDamage != null)
                         player.hurt(possibleDamage.first, possibleDamage.second);

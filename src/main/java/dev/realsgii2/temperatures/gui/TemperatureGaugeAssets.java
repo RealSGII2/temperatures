@@ -1,7 +1,7 @@
 package dev.realsgii2.temperatures.gui;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.TemperaturesMod;
+import dev.realsgii2.temperatures.Util;
 import dev.realsgii2.temperatures.handler.Temperature;
 import net.minecraft.resources.ResourceLocation;
 
@@ -25,7 +25,7 @@ public class TemperatureGaugeAssets {
         if (temperature.isAmbientFreezing()) return ExtremeBackgroundTexture.TOO_COLD.texture;
         if (temperature.isAmbientConsideredBurning() || temperature.isAmbientBurning()) return ExtremeBackgroundTexture.TOO_HOT.texture;
 
-        return GaugeBackgroundTextures.get(Pair.of(temperature.getColdResistance(), temperature.getHeatResistance()));
+        return GaugeBackgroundTextures.get(Util.Pair.of(temperature.getColdResistance(), temperature.getHeatResistance()));
     }
 
     /**
@@ -113,13 +113,13 @@ public class TemperatureGaugeAssets {
     /**
      * A map of [coldProtection, heatProtection] to the background representing those protection levels.
      */
-    public static final Map<Pair<Double, Double>, ResourceLocation> GaugeBackgroundTextures = new HashMap<>() {
+    public static final Map<Util.Pair<Double, Double>, ResourceLocation> GaugeBackgroundTextures = new HashMap<>() {
         {
             final List<Double> map = List.of(1.0, 1.5, 2.0);
 
             for (int x = 0; x < 3; x++) {
                 for (int y = 0; y < 3; y++) {
-                    put(Pair.of(map.get(x), map.get(y)), TemperaturesMod.location("textures/gui/gauge/bg/cold" + x + "_hot" + y + ".png"));
+                    put(Util.Pair.of(map.get(x), map.get(y)), TemperaturesMod.location("textures/gui/gauge/bg/cold" + x + "_hot" + y + ".png"));
                 }
             }
         }

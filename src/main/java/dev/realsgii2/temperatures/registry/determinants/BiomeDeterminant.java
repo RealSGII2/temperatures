@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures.registry.determinants;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.Config;
 import dev.realsgii2.temperatures.Util;
 import dev.realsgii2.temperatures.api.registry.determinant.IDeterminant;
@@ -26,8 +25,8 @@ public class BiomeDeterminant implements IDeterminant.INameableDeterminant {
     public double getTemperature(Player player, double result) {
         Level level = player.level();
 
-        List<Pair<Biome, Double>> nearbyBiomes = Util.World.getNearbyWeightedBiomes(player);
-        result += Util.Mathf.weightedAverage(nearbyBiomes.stream().map(x -> Pair.of(getBiomeTemperature(level, x.first), x.second)).collect(Collectors.toList()));
+        List<Util.Pair<Biome, Double>> nearbyBiomes = Util.World.getNearbyWeightedBiomes(player);
+        result += Util.Mathf.weightedAverage(nearbyBiomes.stream().map(x -> Util.Pair.of(getBiomeTemperature(level, x.first), x.second)).collect(Collectors.toList()));
 
         return result;
     }
@@ -42,7 +41,7 @@ public class BiomeDeterminant implements IDeterminant.INameableDeterminant {
      * @param biome The biome to get the temperature of.
      */
     public static double getBiomeTemperature(Level level, Biome biome) {
-        Config.Common.BiomeData biomeData = Config.Common.getBiome(biome);
+        Config.Common.BiomeData biomeData = Config.Common.getBiome(level, biome);
         if (biomeData == null) return 0.0;
         else return getBiomeTemperature(level, biomeData);
     }

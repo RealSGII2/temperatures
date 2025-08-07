@@ -1,8 +1,8 @@
 package dev.realsgii2.temperatures;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.gui.boilerplate.GuiVector;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -81,7 +81,7 @@ public class Config {
 
         static final ForgeConfigSpec SPEC = BUILDER.build();
 
-        private static List<? extends Pair<String, Double>> warmBlocks;
+        private static List<? extends Util.Pair<String, Double>> warmBlocks;
 
         public static double getDiffInRain() {
             return DIFF_IN_RAIN.get();
@@ -91,10 +91,10 @@ public class Config {
             return DIFF_IN_SNOW.get();
         }
 
-        public static List<? extends Pair<String, Double>> getWarmBlocks() {
+        public static List<? extends Util.Pair<String, Double>> getWarmBlocks() {
             if (warmBlocks == null)
                 warmBlocks =
-                        WARM_BLOCKS.get().stream().map(t -> Pair.of((String) t.get(0), toDouble(t.get(1)))).collect(Collectors.toList());
+                        WARM_BLOCKS.get().stream().map(t -> Util.Pair.of((String) t.get(0), toDouble(t.get(1)))).collect(Collectors.toList());
 
             return warmBlocks;
         }
@@ -118,8 +118,8 @@ public class Config {
             return getWarmBlocks().stream().filter(pair -> pair.first.equals(blockName)).map(x -> x.second).findFirst().orElse(0.0);
         }
 
-        public static List<Pair<String, Double>> getAllWarmBlocks() {
-            return getWarmBlocks().stream().map(t -> Pair.of(t.first, t.second)).collect(Collectors.toList());
+        public static List<Util.Pair<String, Double>> getAllWarmBlocks() {
+            return getWarmBlocks().stream().map(t -> Util.Pair.of(t.first, t.second)).collect(Collectors.toList());
         }
 
         public static List<? extends Triple<String, Double, Double>> getBiomeTemperatures() {
@@ -133,8 +133,8 @@ public class Config {
             return rawInfo.map(BiomeData::of).orElse(null);
         }
 
-        public static BiomeData getBiome(Biome biome) {
-            ResourceLocation biomeId = Util.getBiomeId(biome);
+        public static BiomeData getBiome(Level level, Biome biome) {
+            ResourceLocation biomeId = Util.getBiomeId(level, biome);
             if (biomeId == null) return null;
 
             return getBiome(biomeId.toString());

@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures;
 
-import com.ibm.icu.impl.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -10,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
 import java.util.*;
@@ -29,7 +29,8 @@ public class Util {
 
     /**
      * Enchants an item with level 1.
-     * @param item The item to enchant.
+     *
+     * @param item        The item to enchant.
      * @param enchantment The enchantment to use.
      * @return The enchanted item.
      */
@@ -39,9 +40,10 @@ public class Util {
 
     /**
      * Enchants an item.
-     * @param item The item to enchant.
+     *
+     * @param item        The item to enchant.
      * @param enchantment The enchantment to use.
-     * @param level The enchanted item.
+     * @param level       The enchanted item.
      * @return The enchanted item.
      */
     public static ItemStack enchant(ItemStack item, Enchantment enchantment, int level) {
@@ -51,18 +53,19 @@ public class Util {
 
     /**
      * Gets the resource location of a biome.
+     *
      * @param biome The biome to get.
      */
-    public static ResourceLocation getBiomeId(Biome biome) {
-        assert Minecraft.getInstance().level != null;
+    public static ResourceLocation getBiomeId(Level level,  Biome biome) {
         Optional<Registry<Biome>> biomeRegistry =
-                Minecraft.getInstance().level.registryAccess().registry(Registries.BIOME);
+                level.registryAccess().registry(Registries.BIOME);
         return biomeRegistry.map(biomes -> biomes.getKey(biome)).orElse(null);
     }
 
     public static class Mathf {
         /**
          * Captures an interpolation of a value between a start a goal.
+         *
          * @param a The start.
          * @param b The goal.
          * @param t The progress to capture
@@ -74,6 +77,7 @@ public class Util {
 
         /**
          * Captures an interpolation of a value between a start a goal.
+         *
          * @param a The start.
          * @param b The goal.
          * @param t The progress to capture
@@ -85,6 +89,7 @@ public class Util {
 
         /**
          * Ensures that a number is within [lower, higher].
+         *
          * @param x      The number to ensure.
          * @param lower  The lower bound.
          * @param higher The higher bound.
@@ -96,6 +101,7 @@ public class Util {
 
         /**
          * Returns a weighted average.
+         *
          * @param dataPoints A list of data values: Pair(Data Value, Weight).
          * @return The weighted average of dataPoints.
          */
@@ -125,8 +131,9 @@ public class Util {
 
         /**
          * Gets positions nearby a position.
-         * @param pos The centre of the search.
-         * @param samples The amount of samples to take.
+         *
+         * @param pos      The centre of the search.
+         * @param samples  The amount of samples to take.
          * @param interval The space between samples.
          * @return All positions considered.
          */
@@ -147,8 +154,9 @@ public class Util {
 
         /**
          * Gets three levels of positions nearby a position.
-         * @param pos The centre of the search.
-         * @param samples The amount of samples to take.
+         *
+         * @param pos      The centre of the search.
+         * @param samples  The amount of samples to take.
          * @param interval The space between samples.
          * @return All positions considered.
          */
@@ -158,6 +166,40 @@ public class Util {
             result.addAll(getNearbyPositions(pos.above(), samples, interval));
 
             return result;
+        }
+    }
+
+    // Copied from IBM ICU's Pair class
+    // Reason: Dedicated server crashes when using an import
+    public static class Pair<F, S> {
+        public final F first;
+        public final S second;
+
+        protected Pair(F first, S second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public static <F, S> Pair<F, S> of(F first, S second) {
+            if (first != null && second != null) {
+                return new Pair<>(first, second);
+            } else {
+                throw new IllegalArgumentException("Pair.of requires non null values.");
+            }
+        }
+
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            } else if (!(other instanceof Pair<?, ?> rhs)) {
+                return false;
+            } else {
+                return this.first.equals(rhs.first) && this.second.equals(rhs.second);
+            }
+        }
+
+        public int hashCode() {
+            return this.first.hashCode() * 37 + this.second.hashCode();
         }
     }
 

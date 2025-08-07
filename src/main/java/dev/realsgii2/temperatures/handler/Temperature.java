@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures.handler;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.Config;
 import dev.realsgii2.temperatures.Util;
 import dev.realsgii2.temperatures.api.registry.determinant.DeterminantRegistry;
@@ -60,20 +59,20 @@ public class Temperature {
      * @return [DamageSource, Amount to be applied] or null if none should be applied.
      * @implNote Also call {@link #isPlayerBurning()} to see if the player should be set on fire.
      */
-    public Pair<DamageSource, Integer> getPossibleDamage(TickEvent.PlayerTickEvent event) {
+    public Util.Pair<DamageSource, Integer> getPossibleDamage(TickEvent.PlayerTickEvent event) {
         ModDamageSources damageSources = ModDamageSources.fromEvent(event);
 
         if (isPlayerFreezing() && event.player.tickCount % Config.Server.getExtremeDamageTick() == 0)
-            return Pair.of(damageSources.FREEZE, Config.Server.getExtremeDamageAmount());
+            return Util.Pair.of(damageSources.FREEZE, Config.Server.getExtremeDamageAmount());
 
         if (event.player.tickCount % Config.Server.getNormalDamageTick() == 0)
             if (isPlayerCold() && !isAmbientFreezing())
-                return Pair.of(damageSources.COLD, Config.Server.getNormalDamageAmount());
+                return Util.Pair.of(damageSources.COLD, Config.Server.getNormalDamageAmount());
             else if (isPlayerHot()) {
                 if (isPlayerBurning())
                     // Set the player on fire instead; don't apply custom damage.
                     return null;
-                else if (!isAmbientBurning()) return Pair.of(damageSources.HEAT, Config.Server.getNormalDamageAmount());
+                else if (!isAmbientBurning()) return Util.Pair.of(damageSources.HEAT, Config.Server.getNormalDamageAmount());
             }
 
         return null;

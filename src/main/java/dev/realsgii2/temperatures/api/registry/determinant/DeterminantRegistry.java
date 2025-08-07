@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures.api.registry.determinant;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.TemperaturesMod;
 import dev.realsgii2.temperatures.Util;
 import dev.realsgii2.temperatures.api.registry.TemperatureRegistries;
@@ -134,12 +133,12 @@ public class DeterminantRegistry {
         if (possibleOverrides.isEmpty())
             return Util.Mathf.clamp(result, -2.0, 2.0);
         else {
-            Pair<Integer, Double> largestOverride = Pair.of(IDeterminant.NO_OVERRIDE, 0.0);
+            Util.Pair<Integer, Double> largestOverride = Util.Pair.of(IDeterminant.NO_OVERRIDE, 0.0);
 
             for (int key : possibleOverrides.keySet()) {
                 double value = possibleOverrides.get(key);
                 if (key > largestOverride.first) {
-                    largestOverride = Pair.of(key, value);
+                    largestOverride = Util.Pair.of(key, value);
                 }
             }
 

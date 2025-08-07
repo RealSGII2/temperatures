@@ -1,6 +1,5 @@
 package dev.realsgii2.temperatures.gui;
 
-import com.ibm.icu.impl.Pair;
 import dev.realsgii2.temperatures.Config;
 import dev.realsgii2.temperatures.Util;
 import dev.realsgii2.temperatures.gui.boilerplate.GraphicsRenderer;
@@ -39,8 +38,9 @@ public class TemperatureGaugeOverlay implements IGuiOverlay {
         renderer.debug("Temperature " + temperature.compute());
         renderer.debug("Weights:");
 
-        for (Pair<Biome, Double> biome : Util.World.getNearbyWeightedBiomes(Minecraft.getInstance().player)) {
-            renderer.debug("  - " + Util.getBiomeId(biome.first) + "("  + biome.second + ")");
+        for (Util.Pair<Biome, Double> biome : Util.World.getNearbyWeightedBiomes(Minecraft.getInstance().player)) {
+            assert Minecraft.getInstance().level != null;
+            renderer.debug("  - " + Util.getBiomeId(Minecraft.getInstance().level, biome.first) + "("  + biome.second + ")");
         }
     }
 

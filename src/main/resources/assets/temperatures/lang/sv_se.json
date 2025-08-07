@@ -76,5 +76,13 @@
 	"enchantment.temperatures.ice_breaker": "Isbrytning",
 	"enchantment.temperatures.ice_breaker.desc": "Immunity to freezing in very cold water.",
 
-	"itemGroup.temperatures": "Temperatures"
+	"itemGroup.temperatures": "Temperatures",
+	"item.minecraft.potion.effect.ice_breaker_ii": "Potion of Icebreaking II",
+	"item.minecraft.splash_potion.effect.ice_breaker_ii": "Splash Potion of Icebreaking II",
+	"item.minecraft.lingering_potion.effect.ice_breaker_ii": "Lingering Potion of Icebreaking II",
+	"item.minecraft.tipped_arrow.effect.ice_breaker_ii": "Icebreaking Tipped Arrow II",
+	"item.minecraft.potion.effect.ice_breaker_ii_long": "Potion of Icebreaking II",
+	"item.minecraft.splash_potion.effect.ice_breaker_ii_long": "Splash Potion of Icebreaking II",
+	"item.minecraft.lingering_potion.effect.ice_breaker_ii_long": "Lingering Potion of Icebreaking II",
+	"item.minecraft.tipped_arrow.effect.ice_breaker_ii_long": "Icebreaking Tipped Arrow II"
 }
